@@ -18,10 +18,10 @@ def main():
     print "Requesting earthquakes data with magnitude over {}, for years: {}".format(magnitudeOver, years)
     for year in years:
         print year
-        eq_list_raw = Acquisition.request(year)
-        eq_list_temp = Preprocessing.cleanHeaders(eq_list_raw)
-        eq_list = Preprocessing.splitDateTime(eq_list_temp)
-        Store.toFile(eq_list)
+        eq_list_raw = Acquisition.request(year,magnitudeOver)
+        #eq_list_temp = Preprocessing.cleanHeaders(eq_list_raw)
+        #eq_list = Preprocessing.splitDateTime(eq_list_temp)
+        #Store.toFile(eq_list)
         print "Data acquisition ended"
 
 
