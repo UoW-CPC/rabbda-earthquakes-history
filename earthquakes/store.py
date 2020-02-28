@@ -4,21 +4,14 @@ import os
 class Store:
 
     @classmethod
-    def toFile(cls, eq_list,year):
-        cls.createFolder()
-        cls.createFile(year)
+    def toFile(cls, eq_list, year, d):
         count = 0
         with open('../data/earthquakes{}.csv'.format(year), 'a') as writer:
             for eq in eq_list:
                 count = count + 1
                 eq_str = ",".join(eq)
                 writer.write("%s\r\n" % (eq_str))
-            print "Single date data stored to file, records: ",count
-
-    @classmethod
-    def createFile(cls,year):
-        with open('../data/earthquakes{}.csv'.format(year), 'w') as writer:
-            writer.write("")
+            print "Data for {} stored to file, records: {}".format(d,count)
 
     @classmethod
     def createFolder(cls):
