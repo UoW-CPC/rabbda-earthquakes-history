@@ -1,7 +1,7 @@
 import os
 
 
-class Store:
+class StoreData:
 
     @classmethod
     def toFile(cls, eq_list, year, d):
@@ -11,7 +11,7 @@ class Store:
                 count = count + 1
                 eq_str = ",".join(eq)
                 writer.write("%s\r\n" % (eq_str))
-            print "Data for {} stored to file, records: {}".format(d,count)
+            print "Data for {} stored to file, records: {}".format(d, count)
 
     @classmethod
     def createFolder(cls):

@@ -5,7 +5,7 @@ from input import Input
 from database import Database
 from acquisition import Acquisition
 from preprocessing import Preprocessing
-from store import Store
+from storeData import StoreData
 
 
 def main():
@@ -13,11 +13,11 @@ def main():
     args = inputArgs[1:]
     yearsTempList, magnitudeOver, overwrite = Input.getValues(args)
     years = Database.validateYears(yearsTempList, magnitudeOver, overwrite)
-    Store.createFolder()
-    print "Data acquisition starts"
+    StoreData.createFolder()
     print "Requesting earthquakes data with magnitude over {}, for years: {}".format(magnitudeOver, years)
     for year in years:
-        print year
+        print "Processing year: ", year
+        print "Data acquisition starts"
         firstDate = date(year, 1, 1)
         lastDate = date(year, 12, 31)
         for d in dateRange(firstDate, lastDate):
@@ -27,10 +27,9 @@ def main():
                 eq_list_raw = Acquisition.request(start, end, magnitudeOver)
                 eq_list_temp = Preprocessing.cleanHeaders(eq_list_raw)
                 eq_list = Preprocessing.splitDateTime(eq_list_temp)
-                Store.toFile(eq_list, year,d)
+                StoreData.toFile(eq_list, year, d)
             except Exception as error:
-                print "Error while processing a request:",error
-
+                print "Error while processing a request:", error
         print "Data acquisition ended"
 
 

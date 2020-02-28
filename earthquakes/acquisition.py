@@ -20,4 +20,4 @@ class Acquisition:
                     eq_list = list(eq_csv)
                     return eq_list
             except Exception as error:
-                print"Request error: ", error
+                print"Request Error: ", error
