@@ -13,8 +13,6 @@ def main():
     inputArgs = sys.argv
     args = inputArgs[1:]
     yearsTempList,overwrite = Input.getValues(args)
-    print yearsTempList
-    print overwrite
     years = Database.validateYears(yearsTempList,overwrite)
     for year in years:
         print year

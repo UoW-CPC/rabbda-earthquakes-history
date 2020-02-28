@@ -48,11 +48,11 @@ class Input:
                     overwriteFlag = True
 
         fromToOption = False
-        yearListOption = False
+        yearOption = False
         if fromYearFlag and toYearFlag and not yearFlag:
             fromToOption = True
         elif not fromYearFlag and not toYearFlag and yearFlag:
-            yearListOption = True
+            yearOption = True
         else:
             print "Input Parameters Error.\r\n" \
                   "You must pass parameters in one of the following formats:\r\n" \
@@ -65,7 +65,7 @@ class Input:
             fromYearInt = cls.validateYear(fromYearArg)
             toYearInt = cls.validateYear(toYearArg)
             yearsList = cls.toList(fromYearInt, toYearInt)
-        elif yearListOption:
+        elif yearOption:
             yearsList = cls.toList(yearArg, None)
 
         return yearsList, overwriteFlag
