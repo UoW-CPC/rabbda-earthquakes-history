@@ -48,10 +48,14 @@ class Input:
                 else:
                     overwriteFlag = True
 
+        fromToOption = False
+        yearOption = False
         if fromYearFlag and toYearFlag and not yearFlag:
             print "Accepted input parameters. From - To"
+            fromToOption = True
         elif not fromYearFlag and not toYearFlag and yearFlag:
             print "Accepted input parameter. Year"
+            yearOption = True
         else:
             print "Input Parameters Error.\r\n" \
                   "You must pass parameters in one of the following formats:\r\n" \
@@ -59,13 +63,15 @@ class Input:
                   "Example with a list of unique values: '--year=2010,2011,2012'\r\n" \
                   "Exiting the application.."
             sys.exit(2)
-        if overwriteFlag:
-            print "Overwrite data is enabled"
 
-        yearList = cls.toList(yearArg)
-        fromYearInt = cls.validateYear(fromYearFlag)
-        toYearInt = cls.validateYear(toYearArg)
-        return fromYearInt,toYearInt
+        if fromToOption:
+            fromYearInt = cls.validateYear(fromYearFlag)
+            toYearInt = cls.validateYear(toYearArg)
+            yearList = cls.toList(yearArg)
+        elif yearOption:
+            yearList = cls.toList(yearArg)
+
+        return yearList, overwriteFlag
 
     @classmethod
     def notUniqueArg(cls):
