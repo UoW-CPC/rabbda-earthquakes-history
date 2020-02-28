@@ -9,9 +9,11 @@ from store import Store
 
 
 def main():
-    allInputArgs = sys.argv
-    inputArgs = allInputArgs[1:]
-    Input.evaluate(inputArgs)
+    inputArgs = sys.argv
+    args = inputArgs[1:]
+    yearsList,overwriteFlag = Input.evaluate(args)
+    print yearsList
+    print overwriteFlag
     """
     try:
         interval = int(sys.argv[1])

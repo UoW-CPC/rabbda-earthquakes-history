@@ -6,7 +6,6 @@ class Input:
 
     @classmethod
     def evaluate(cls, inputArgs):
-        print inputArgs
         options = "y:f:t:o"
         longOptions = ["year=", "from-year=", "to-year=", "overwrite"]
         try:
@@ -49,13 +48,11 @@ class Input:
                     overwriteFlag = True
 
         fromToOption = False
-        yearOption = False
+        yearListOption = False
         if fromYearFlag and toYearFlag and not yearFlag:
-            print "Accepted input parameters. From - To"
             fromToOption = True
         elif not fromYearFlag and not toYearFlag and yearFlag:
-            print "Accepted input parameter. Year"
-            yearOption = True
+            yearListOption = True
         else:
             print "Input Parameters Error.\r\n" \
                   "You must pass parameters in one of the following formats:\r\n" \
@@ -65,22 +62,40 @@ class Input:
             sys.exit(2)
 
         if fromToOption:
-            fromYearInt = cls.validateYear(fromYearFlag)
+            fromYearInt = cls.validateYear(fromYearArg)
             toYearInt = cls.validateYear(toYearArg)
-            yearList = cls.toList(yearArg)
-        elif yearOption:
-            yearList = cls.toList(yearArg)
+            yearsList = cls.toList(fromYearInt, toYearInt)
+        elif yearListOption:
+            yearsList = cls.toList(yearArg, None)
 
-        return yearList, overwriteFlag
+        return yearsList, overwriteFlag
 
     @classmethod
     def notUniqueArg(cls):
         print "Input Error. Can't pass one argument twice. Exiting the application.."
         sys.exit(2)
 
+
     @classmethod
-    def toList(cls):
-        print "hello"
+    def toList(cls,args1, args2):
+        yearsList = []
+        if args2 is None:
+            yearsTempList = str(args1).split(",")
+            for year in yearsTempList:
+                yearInt = cls.validateYear(year)
+                if yearInt not in yearsList:
+                   yearsList.append(yearInt)
+            yearsList.sort()
+        elif args2 is not None:
+            fromYear = cls.validateYear(args1)
+            toYear = cls.validateYear(args2)
+            if fromYear > toYear:
+                print "Input Error. 'from-year' value must be less that 'to-year' value. Exiting the application.."
+                sys.exit(2)
+            else:
+                for year in range(fromYear,toYear+1):
+                    yearsList.append(year)
+        return yearsList
 
     @classmethod
     def validateYear(cls, arg):
