@@ -6,8 +6,8 @@ class Input:
 
     @classmethod
     def getValues(cls, inputArgs):
-        options = "y:f:t:o"
-        longOptions = ["year=", "from-year=", "to-year=", "overwrite"]
+        options = "y:f:t:m:o"
+        longOptions = ["year=", "from-year=", "to-year=", "magnitude-over=", "overwrite"]
         try:
             opts, args = getopt.getopt(inputArgs, options, longOptions)
         except getopt.GetoptError as err:
@@ -20,6 +20,8 @@ class Input:
         fromYearArg = None
         toYearFlag = False
         toYearArg = None
+        magnOverFlag = False
+        magnOverArg = None
         overwriteFlag = False
 
         for opt, arg in opts:
@@ -41,6 +43,12 @@ class Input:
                 else:
                     toYearFlag = True
                     toYearArg = arg
+            elif opt in ("-m", "--magnitude-over"):
+                if magnOverFlag:
+                    cls.notUniqueArg()
+                else:
+                    magnOverFlag = True
+                    magnOverArg = arg
             elif opt in ("-o", "--overwrite"):
                 if overwriteFlag:
                     cls.notUniqueArg()
@@ -68,23 +76,26 @@ class Input:
         elif yearOption:
             yearsList = cls.toList(yearArg, None)
 
-        return yearsList, overwriteFlag
+        if magnOverArg is None:
+            magnOverArg = 0
+        magnitudeOver = cls.validateMagnitude(magnOverArg)
+
+        return yearsList, magnitudeOver, overwriteFlag
 
     @classmethod
     def notUniqueArg(cls):
         print "Input Error. Can't pass one argument twice. Exiting the application.."
         sys.exit(2)
 
-
     @classmethod
-    def toList(cls,args1, args2):
+    def toList(cls, args1, args2):
         yearsList = []
         if args2 is None:
             yearsTempList = str(args1).split(",")
             for year in yearsTempList:
                 yearInt = cls.validateYear(year)
                 if yearInt not in yearsList:
-                   yearsList.append(yearInt)
+                    yearsList.append(yearInt)
             yearsList.sort()
         elif args2 is not None:
             fromYear = cls.validateYear(args1)
@@ -93,7 +104,7 @@ class Input:
                 print "Input Error. 'from-year' value must be less that 'to-year' value. Exiting the application.."
                 sys.exit(2)
             else:
-                for year in range(fromYear,toYear+1):
+                for year in range(fromYear, toYear + 1):
                     yearsList.append(year)
         return yearsList
 
@@ -111,4 +122,18 @@ class Input:
             print (
                 "invalid year input, value: '{}'. You can only pass year values from '1900' to '{}'. Exciting the application..".format(
                     arg, currentYear))
+            sys.exit(2)
+
+    @classmethod
+    def validateMagnitude(cls, arg):
+        try:
+            magnutide = float(arg)
+            if 0 <= magnutide <= 8:
+                return magnutide
+            else:
+                sys.exit(2)
+        except:
+            print (
+                "invalid magnitude input, value: '{}'. You can only pass magnitude values from '0.0' to '8.0'. Exciting the application..".format(
+                    arg))
             sys.exit(2)
