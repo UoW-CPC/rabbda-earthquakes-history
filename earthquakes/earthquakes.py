@@ -3,6 +3,7 @@ import time
 from datetime import datetime, timedelta
 
 from input import Input
+from database import Database
 from acquisition import Acquisition
 from preprocessing import Preprocessing
 from store import Store
@@ -11,9 +12,12 @@ from store import Store
 def main():
     inputArgs = sys.argv
     args = inputArgs[1:]
-    yearsList,overwriteFlag = Input.evaluate(args)
-    print yearsList
-    print overwriteFlag
+    yearsTempList,overwrite = Input.getValues(args)
+    print yearsTempList
+    print overwrite
+    years = Database.validateYears(yearsTempList,overwrite)
+    for year in years:
+        print year
     """
     try:
         interval = int(sys.argv[1])

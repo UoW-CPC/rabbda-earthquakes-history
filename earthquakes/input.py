@@ -5,7 +5,7 @@ from datetime import datetime
 class Input:
 
     @classmethod
-    def evaluate(cls, inputArgs):
+    def getValues(cls, inputArgs):
         options = "y:f:t:o"
         longOptions = ["year=", "from-year=", "to-year=", "overwrite"]
         try:
