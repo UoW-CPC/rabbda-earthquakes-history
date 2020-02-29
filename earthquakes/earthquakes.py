@@ -6,6 +6,7 @@ from database import Database
 from acquisition import Acquisition
 from preprocessing import Preprocessing
 from storeData import StoreData
+from hdfs import HDFS
 
 
 def main():
@@ -27,10 +28,12 @@ def main():
                 eq_list_raw = Acquisition.request(start, end, magnitudeOver)
                 eq_list_temp = Preprocessing.cleanHeaders(eq_list_raw)
                 eq_list = Preprocessing.splitDateTime(eq_list_temp)
-                StoreData.toFile(eq_list, year, d)
+                StoreData.toFile(eq_list, year, d,magnitudeOver)
             except Exception as error:
                 print "Error while processing a request:", error
         print "Data acquisition ended"
+        path = HDFS.getPath()
+        HDFS.put('../data/earthquakes{}mag{}.csv'.format(year, magnitudeOver), path)
 
 
 def dateRange(firstDate, lastDate):

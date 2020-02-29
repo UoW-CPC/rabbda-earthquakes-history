@@ -4,9 +4,9 @@ import os
 class StoreData:
 
     @classmethod
-    def toFile(cls, eq_list, year, d):
+    def toFile(cls, eq_list, year, d, magnitudeOver):
         count = 0
-        with open('../data/earthquakes{}.csv'.format(year), 'a') as writer:
+        with open('../data/earthquakes{}mag{}.csv'.format(year,magnitudeOver), 'a') as writer:
             for eq in eq_list:
                 count = count + 1
                 eq_str = ",".join(eq)
@@ -19,6 +19,6 @@ class StoreData:
         try:
             os.mkdir(path)
         except OSError:
-            print ("Creation of the directory %s failed, already exist" % path)
+            print ("Creation of the data directory %s failed, already exist" % path)
         else:
-            print ("Successfully created the directory %s " % path)
+            print ("Successfully created data directory %s " % path)

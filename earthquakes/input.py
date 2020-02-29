@@ -1,13 +1,15 @@
 import sys, getopt
 from datetime import datetime
 
+from hdfs import HDFS
+
 
 class Input:
 
     @classmethod
     def getValues(cls, inputArgs):
-        options = "y:f:t:m:o"
-        longOptions = ["year=", "from-year=", "to-year=", "magnitude-over=", "overwrite"]
+        options = "y:f:t:m:p:o"
+        longOptions = ["year=", "from-year=", "to-year=", "magnitude-over=", "overwrite","hdfs-path="]
         try:
             opts, args = getopt.getopt(inputArgs, options, longOptions)
         except getopt.GetoptError as err:
@@ -23,9 +25,17 @@ class Input:
         magnOverFlag = False
         magnOverArg = None
         overwriteFlag = False
+        hdfsPathFlag = False
+        hdfsPathArg = None
 
         for opt, arg in opts:
-            if opt in ("-y", "--year"):
+            if opt in ("-p", "--hdfs-path"):
+                if hdfsPathFlag:
+                    cls.notUniqueArg()
+                else:
+                    hdfsPathFlag = True
+                    hdfsPathArg = arg
+            elif opt in ("-y", "--year"):
                 if yearFlag:
                     cls.notUniqueArg()
                 else:
@@ -54,6 +64,12 @@ class Input:
                     cls.notUniqueArg()
                 else:
                     overwriteFlag = True
+
+        if hdfsPathFlag is False:
+            print "Input Error. You must specify a valid HDFS path. Exiting the application.."
+            sys.exit(2)
+        else:
+            HDFS.pathValidation(hdfsPathArg)
 
         fromToOption = False
         yearOption = False
