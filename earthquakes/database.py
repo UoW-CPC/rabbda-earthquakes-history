@@ -5,7 +5,7 @@ from datetime import datetime
 class Database:
 
     @classmethod
-    def validateYears(cls, yearsTempList, magnitudeOver, overwrite):
+    def queryInput(cls, yearsTempList, magnitudeOver, overwrite):
         years = []
         db = TinyDB('../yearsdb.json')
         for year in yearsTempList:

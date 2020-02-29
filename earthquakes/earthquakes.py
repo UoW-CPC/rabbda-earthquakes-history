@@ -13,7 +13,7 @@ def main():
     inputArgs = sys.argv
     args = inputArgs[1:]
     yearsTempList, magnitudeOver, overwrite = Input.getValues(args)
-    years = Database.validateYears(yearsTempList, magnitudeOver, overwrite)
+    years = Database.queryInput(yearsTempList, magnitudeOver, overwrite)
     StoreData.createFolder()
     print "Requesting earthquakes data with magnitude over {}, for years: {}".format(magnitudeOver, years)
     for year in years:

@@ -26,7 +26,6 @@ class HDFS:
             print err
         else:
             print "File successfully uploaded to HDFS."
-            print "Check the input HDFS path."
 
 
     @classmethod
