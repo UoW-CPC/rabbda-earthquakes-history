@@ -86,7 +86,7 @@ The steps to store these data to HDFS are the following:
  This is because application stores in its internal database past requests for years and related magnitude
  so to avoid possible data duplication.  
  
- To force downloading also year 2005, you need to pass the overwrite option.
+ To force download also year 2005, you need to pass the overwrite option.
  ```
  # The program starts the downloading process for years 2003,2004,2005 with overwrite option active.
  python earthquakes.py -p /user/earthquakes/ -f 2003 -t 2005 -o 
