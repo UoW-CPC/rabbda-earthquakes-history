@@ -69,7 +69,7 @@ The steps to store these data to HDFS are the following:
  -f, --from-year=           Download earthquakes from this year [Required - Option 2]
  -t, --to-year=             Download earthquakes until this year [Required - Option 2]
  -m, --magnitude-over=      Download earthquakes with magnitide-over input value (Default value 0.0) [Optional]
- -o, --overwrite            Instruct the application to download again earthquakes that has been downloaded before [Optional]
+ -o, --overwrite            Instruct the application to download earthquakes that has been downloaded before [Optional]
  ```
  Initialisation commands:
  
