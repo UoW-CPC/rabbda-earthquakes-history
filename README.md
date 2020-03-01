@@ -93,7 +93,7 @@ The steps to store these data to HDFS are the following:
  ```
  __Example 3:__ Download earthquakes for the year 2020 with magnitude over 6.5. 
  ```
- # The program downloads earthquakes for the year 2020 with magnitude over 6.5
+ # The program downloads all the earthquakes for the year 2020 with magnitude over 6.5.
  python earthquakes.py -p /user/earthquakes/ -y 2020 -m 6.5 
  ```
  
