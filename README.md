@@ -97,6 +97,8 @@ The steps to store these data to HDFS are the following:
  python earthquakes.py -p /user/earthquakes/ -y 2020 -m 6.5 
  ```
  
+ #### Check the data in the local machine
+ 
  To see the results open a new terminal and move to the repository directory. There, you can see a new directory, _data_.
  Move into this folder; there you can find files for each input year and requested magnitude. 
  For instance, for _example 3_ the file will be _earthquakes2020mag6.5.csv_.
@@ -105,7 +107,7 @@ The steps to store these data to HDFS are the following:
  
 
  
- #### Uploading the data in HDFS
+ #### Check the data in HDFS
  
  When the program finish downloading earthquakes for a specific year, it upload the related file
  to HDFS.  
