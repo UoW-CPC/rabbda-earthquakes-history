@@ -11,10 +11,10 @@ USGS provides a [Rest API](https://earthquake.usgs.gov/fdsnws/event/1/) which wi
 Sample request in csv format: [earthquakes](https://earthquake.usgs.gov/fdsnws/event/1/query?format=csv&starttime=2020-02-18T00:00:00.000Z&endtime=2020-02-19T00:00:00.000)
 
 The steps to store these data to HDFS are the following:
- 1. Give as input the range of years and earthquakes magnitude to be requested 
+ 1. Give as input, years and earthquakes magnitude to be requested. 
  2. For each year, request the data from the Rest API.
  3. Pre-process the data to remove headers and format earthquakes date and time.
- 3. Save the data temporary to the host machine.
+ 3. Save the data to the host machine.
  4. Upload the data to HDFS.
  
  ## Getting started
