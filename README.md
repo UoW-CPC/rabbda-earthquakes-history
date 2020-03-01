@@ -99,9 +99,19 @@ The steps to store these data to HDFS are the following:
  
  #### Check the data in the local machine
  
- To see the results open a new terminal and move to the repository directory. There, you can see a new directory, _data_.
- Move into this folder; there you can find files for each input year and requested magnitude. 
- For instance, for _example 3_ the file will be _earthquakes2020mag6.5.csv_.
+ To check that the data are being downloaded in your local machine open a new terminal and move to the repository directory. 
+ There is a new directory, _data_.
+ Now, into this folder files are being populated for each input year and requested magnitude. 
+ For instance, _example 3_ file will be _earthquakes2020mag6.5.csv_.
+ 
+  To see its content run the following command:
+   ```
+ cat earthquakes2020mag6.5.csv.csv
+ ```
+ Alternatively, you can monitor file changes with the command:
+ ```
+ tail -F earthquakes2020mag6.5.csv.csv
+ ```
  
  At this point, we have verified the data in the local machine.
  
