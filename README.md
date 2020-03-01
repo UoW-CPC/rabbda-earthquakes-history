@@ -106,11 +106,11 @@ The steps to store these data to HDFS are the following:
  
   To see its content run the following command:
    ```
- cat earthquakes2020mag6.5.csv.csv
+ cat earthquakes2020mag6.5.csv
  ```
  Alternatively, you can monitor file changes with the command:
  ```
- tail -F earthquakes2020mag6.5.csv.csv
+ tail -F earthquakes2020mag6.5.csv
  ```
  
  At this point, we have verified the data in the local machine.
