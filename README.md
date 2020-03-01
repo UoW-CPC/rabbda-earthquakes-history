@@ -99,7 +99,7 @@ The steps to store these data to HDFS are the following:
  
  #### Check the data in the local machine
  
- To check that the data are being downloaded in your local machine open a new terminal and move to the repository directory. 
+ To check that the data are being downloaded in your local machine, open a new terminal and move to the repository directory. 
  There is a new directory, _data_.
  Now into this folder, files are being populated, one for each input year and requested magnitude. 
  For instance, _example 3_ file will be _earthquakes2020mag6.5.csv_.
@@ -119,11 +119,11 @@ The steps to store these data to HDFS are the following:
  
  #### Check the data in HDFS
  
- When the program finish downloading earthquakes for a specific year, it upload the related file
+ When the program finishes downloading earthquakes for a specific year, it uploads the related file
  to HDFS.  
  
 
- Finally, __go to Ambari Files View__ in the path specified previously and check file availability to HDFS.
+ Finally, __go to Ambari Files View__ in the path specified previously and check that data are available into HDFS.
  
  ## Architecture
 <img width="732" alt="architecture" src="https://user-images.githubusercontent.com/32298274/75445139-bebad500-595c-11ea-830f-9850fa0e7dd0.png">
