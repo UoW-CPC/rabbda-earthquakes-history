@@ -72,7 +72,7 @@ The steps to store these data to HDFS are the following:
  -o, --overwrite            Instruct the application to download earthquakes that has been downloaded before [Optional]
  ```
  
- __Example 1:__ Download all earthquakes for the given years.
+ __Example 1:__ Download all earthquakes for a list of years.
  ``` 
  # The program sorts input years and starts the downloading process from year 1980.
  python earthquakes.py -p /user/earthquakes/ -y 2010,2005,1980 
