@@ -77,7 +77,7 @@ The steps to store these data to HDFS are the following:
  # The program sorts input years and starts the downloading process from year 1980.
  python earthquakes.py -p /user/earthquakes/ -y 2010,2005,1980 
  ```
- __Example 2:__ Download all earthquakes for the given range of years.
+ __Example 2:__ Download all earthquakes for a range of years.
  ```
  # The program starts the downloading process for years 2003,2004,2005.
  python earthquakes.py -p /user/earthquakes/ -f 2003 -t 2005 
