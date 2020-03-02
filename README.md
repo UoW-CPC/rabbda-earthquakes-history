@@ -126,8 +126,7 @@ The steps to store these data to HDFS are the following:
  Finally, __go to Ambari Files View__ in the path specified previously and check that data are available into HDFS.
  
  ## Architecture
-<img width="732" alt="architecture" src="https://user-images.githubusercontent.com/32298274/75445139-bebad500-595c-11ea-830f-9850fa0e7dd0.png">
-
+<img width="997" alt="Screenshot 2020-03-01 at 23 59 26" src="https://user-images.githubusercontent.com/32298274/75636686-c1e1e980-5c18-11ea-8511-867063d32851.png">
 
 
 
