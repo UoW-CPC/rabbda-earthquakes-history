@@ -128,5 +128,3 @@ The steps to store these data to HDFS are the following:
  ## Architecture
 <img width="997" alt="Screenshot 2020-03-02 at 00 03 04" src="https://user-images.githubusercontent.com/32298274/75636740-3e74c800-5c19-11ea-85ff-e4097dfc6384.png">
 
-
-[Demo video](https://drive.google.com/open?id=1cVJDfO616nggClPJWdOQ2HOVEvEpF7tF)
